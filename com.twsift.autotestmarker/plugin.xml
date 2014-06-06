@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            label="Sample Action Set"
+            visible="true"
+            id="com.twsift.autotestmarker.actionSet">
+         <action
+               icon="icons/cog_error.png"
+               class="com.twsift.autotestmarker.actions.ButtonAction"
+               tooltip="Get Failed Autotests"
+               toolbarPath="autotestGroup"
+               id="com.twsift.autotestmarker.actions.ButtonAction">
+         </action>
+      </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.core.resources.markers" id="com.tswift.autotestmarker.id" name="Autotest Failed">
+        <super type="org.eclipse.core.resources.problemmarker" />
+        <super
+         type="org.eclipse.core.resources.textmarker"/>
+		<persistent value="false"/>
+		<attribute name="stacktrace"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.decorators">
+      <decorator
+            adaptable="true"
+            id="com.twsift.autotestmarker.decorator"
+            label="Autotest Failed"
+            lightweight="true" 
+            state="true"
+            class="com.twsift.autotestmarker.decorators.AutotestDecorator">
+         <enablement>
+           <objectClass 
+               name="org.eclipse.core.resources.IResource">
+            </objectClass> 
+         </enablement>
+      </decorator>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="com.twsift.autotestmarker.preferences.JenkinsPreferencePage"
+            id="com.twsift.autotestmarker.preferences.JenkinsPreferencePage"
+            name="Autotest Marker Preferences">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="com.twsift.autotestmarker.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+
+
+</plugin>
