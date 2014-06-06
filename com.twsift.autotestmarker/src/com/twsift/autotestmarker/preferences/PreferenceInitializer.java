@@ -20,6 +20,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
 		store.setDefault(PreferenceConstants.JENKINS_URL, "http://dev-builds.equella.com/");
 		store.setDefault(PreferenceConstants.JENKINS_JOB, "EQUELLA-AutomatedTests%20-%20Local");
+		store.setDefault(PreferenceConstants.AUTOTEST_PROJECT, "TLE Automated Tests");
 	}
 
 }

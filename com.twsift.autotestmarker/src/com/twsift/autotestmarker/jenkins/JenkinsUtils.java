@@ -104,7 +104,7 @@ public class JenkinsUtils
 		screenshotFilename = screenshotFilename.replaceFirst("@.+\\s", "");
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append(jenkinsUrl);
-		stringBuilder.append("/job/");
+		stringBuilder.append("job/");
 		stringBuilder.append(jobName);
 		stringBuilder.append(screenShotEndpoint);
 		stringBuilder.append(screenshotFilename);

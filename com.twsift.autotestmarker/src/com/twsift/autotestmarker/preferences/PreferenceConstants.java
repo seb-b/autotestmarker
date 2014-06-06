@@ -13,4 +13,5 @@ public class PreferenceConstants {
 
 	public static final String JENKINS_JOB = "jenkins.job";
 	
+	public static final String AUTOTEST_PROJECT = "autotest.project";
 }

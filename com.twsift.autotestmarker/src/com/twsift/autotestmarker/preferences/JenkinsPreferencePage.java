@@ -43,6 +43,9 @@ public class JenkinsPreferencePage
 		addField(new StringFieldEditor(PreferenceConstants.JENKINS_JOB, "&Job:", getFieldEditorParent()));
 		addField(new StringFieldEditor(PreferenceConstants.JENKINS_USERNAME, "&Username:", getFieldEditorParent()));
 		addField(new StringFieldEditor(PreferenceConstants.JENKINS_KEY, "&API Key:", getFieldEditorParent()));
+
+		addField(new StringFieldEditor(PreferenceConstants.AUTOTEST_PROJECT, "&Autotest Project Name:",
+			getFieldEditorParent()));
 	}
 
 	/* (non-Javadoc)

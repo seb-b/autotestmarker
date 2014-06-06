@@ -6,13 +6,16 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkbenchWindowActionDelegate;
 
+import com.twsift.autotestmarker.Activator;
 import com.twsift.autotestmarker.jenkins.JenkinsUtils;
 import com.twsift.autotestmarker.jenkins.beans.JenkinsCases;
 import com.twsift.autotestmarker.marker.MarkerHelper;
+import com.twsift.autotestmarker.preferences.PreferenceConstants;
 
 /**
  * Our sample action implements workbench action delegate. The action proxy will
@@ -44,8 +47,10 @@ public class ButtonAction implements IWorkbenchWindowActionDelegate
 	{
 		JenkinsUtils jkUtils = new JenkinsUtils();
 		List<JenkinsCases> badTests = (List<JenkinsCases>) jkUtils.getLatestTestData();
-		// System.out.print(testData);
-		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject("TLE Automated Tests");
+
+		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+		IProject project = ResourcesPlugin.getWorkspace().getRoot()
+			.getProject(store.getString(PreferenceConstants.AUTOTEST_PROJECT));
 		MarkerHelper markers = new MarkerHelper();
 		markers.deleteAutotestMarkers(project);
 		for( JenkinsCases testCase : badTests )
